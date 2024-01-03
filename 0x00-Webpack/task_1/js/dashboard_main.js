@@ -16,7 +16,7 @@ $(document).ready(function () {
     $("#count").text(`${count} clicks on the button`);
   }
 
-  const debouncedUpdateCounter = _.debounce(updateCounter, 800);
+  const debouncedUpdateCounter = _.debounce(updateCounter, 500);
 
   $("#startButton").on("click", debouncedUpdateCounter);
 });
