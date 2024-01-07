@@ -1,12 +1,12 @@
 import React from "react";
 import "./Notifications.css";
 
-function NotificationItem({ type, content, value }) {
+function NotificationItem({ type, html, value }) {
   return (
     <>
       {type && value ? <li type={type}>{value}</li> : null}
-      {content ? (
-        <li data-urgent dangerouslySetInnerHTML={{ __html: content }}></li>
+      {html ? (
+        <li data-urgent dangerouslySetInnerHTML={{ __html: html }}></li>
       ) : null}
     </>
   );

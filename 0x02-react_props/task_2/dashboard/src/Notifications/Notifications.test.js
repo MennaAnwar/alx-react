@@ -15,10 +15,10 @@ describe("Notification tests", () => {
     const wrapper = shallow(<Notifications />);
     expect(wrapper.find("ul").children()).toHaveLength(3);
     expect(wrapper.find("ul").childAt(0).html()).toEqual(
-      '<li data-notification-type="default">New course available</li>'
+      '<li type="default">New course available</li>'
     );
     expect(wrapper.find("ul").childAt(1).html()).toEqual(
-      '<li data-notification-type="urgent">New resume available</li>'
+      '<li type="urgent">New resume available</li>'
     );
     expect(wrapper.find("ul").childAt(2).html()).toEqual(
       `<li data-urgent=\"true\">${getLatestNotification()}</li>`

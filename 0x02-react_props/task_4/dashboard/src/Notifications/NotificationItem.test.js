@@ -13,7 +13,7 @@ describe("rendering components", () => {
     const wrapper = shallow(<NotificationItem />);
 
     wrapper.setProps({ type: "default", value: "test" });
-    expect(wrapper.html()).toEqual('<li type="default">test</li>');
+    expect(wrapper.html()).toEqual('<li data-notification-type="default">test</li>');
   });
 
   it('renders correct html from  html="<u>test</u>" props', () => {

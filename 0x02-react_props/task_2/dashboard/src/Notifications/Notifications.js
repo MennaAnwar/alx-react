@@ -28,7 +28,7 @@ function Notifications() {
       <ul>
         <NotificationItem type="default" value="New course available" />
         <NotificationItem type="urgent" value="New resume available" />
-        <NotificationItem type="urgent" content={getLatestNotification()} />
+        <NotificationItem type="urgent" html={getLatestNotification()} />
       </ul>
     </div>
   );
