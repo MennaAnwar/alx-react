@@ -6,10 +6,10 @@
   width: 95vw;
 }
 
-li[data="default"] {
+li[type="default"] {
   color: blue;
 }
 
-li[data="urgent"] {
+li[type="urgent"] {
   color: red;
 }
