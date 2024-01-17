@@ -83,11 +83,9 @@ const styles = StyleSheet.create({
     position: "relative",
     fontFamily: "Arial, Helvetica, sans-serif",
   },
-  "heading-section": {
-    borderBottom: "4px solid red",
-    display: "flex",
-    justifyContent: "space-between",
-    flexDirection: "row-reverse",
+  "App-body": {
+    marginTop: "2rem",
+    height: "25rem",
   },
   "App-footer": {
     borderTop: "4px solid red",
