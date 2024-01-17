@@ -1,36 +1,31 @@
 import React from "react";
-import propTypes from "prop-types";
-import "./CourseList.css";
+import PropTypes from "prop-types";
 
-const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
-  const row_background_color = { backgroundColor: "#f5f5f5ab" };
-  const header_row_background_color = { backgroundColor: "#deb5b545" };
-  let node;
-  let style;
+function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
+  const headerStyle = { backgroundColor: "#deb5b545" };
+  const rowStyle = { backgroundColor: "#f5f5f5ab" };
+  const selectedStyle = isHeader ? headerStyle : rowStyle;
 
-  if (isHeader) {
-    style = header_row_background_color;
-    if (!textSecondCell) {
-      node = <th colSpan="2">{textFirstCell}</th>;
-    } else {
-      node = (
-        <React.Fragment>
-          <th>{textFirstCell}</th>
-          <th>{textSecondCell}</th>
-        </React.Fragment>
-      );
-    }
-  } else {
-    style = row_background_color;
-    node = (
-      <React.Fragment>
-        <td>{textFirstCell}</td>
-        <td>{textSecondCell}</td>
-      </React.Fragment>
-    );
-  }
-  return <tr style={style}>{node}</tr>;
-};
+  return (
+    <tr style={selectedStyle}>
+      {isHeader ? (
+        textSecondCell === null ? (
+          <th colSpan="2">{textFirstCell}</th>
+        ) : (
+          <>
+            <th>{textFirstCell}</th>
+            <th>{textSecondCell}</th>
+          </>
+        )
+      ) : (
+        <>
+          <td>{textFirstCell}</td>
+          <td>{textSecondCell}</td>
+        </>
+      )}
+    </tr>
+  );
+}
 
 CourseListRow.defaultProps = {
   isHeader: false,
@@ -38,9 +33,9 @@ CourseListRow.defaultProps = {
 };
 
 CourseListRow.propTypes = {
-  isHeader: propTypes.bool,
-  textFirstCell: propTypes.string.isRequired,
-  textSecondCell: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  isHeader: PropTypes.bool,
+  textFirstCell: PropTypes.string,
+  textSecondCell: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default CourseListRow;

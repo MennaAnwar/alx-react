@@ -1,5 +1,4 @@
 import React from "react";
-import "./Notifications.css";
 import PropTypes from "prop-types";
 
 class NotificationItem extends React.PureComponent {
@@ -12,13 +11,7 @@ class NotificationItem extends React.PureComponent {
             {value}
           </li>
         ) : null}
-        {html ? (
-          <li
-            onClick={() => markAsRead(id)}
-            data-urgent
-            dangerouslySetInnerHTML={{ __html: html }}
-          ></li>
-        ) : null}
+        {html ? <li onClick={() => markAsRead(id)} data-urgent dangerouslySetInnerHTML={{ __html: html }}></li> : null}
       </>
     );
   }

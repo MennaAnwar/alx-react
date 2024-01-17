@@ -1,60 +1,48 @@
-import React, { memo } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { StyleSheet, css } from "aphrodite";
-import propTypes from "prop-types";
 
-const NotificationItem = ({ type, value, html, markAsRead, id }) => {
-  if (type === "urgent") {
+class NotificationItem extends React.PureComponent {
+  render() {
+    const { type, value, html, markAsRead, id } = this.props;
     return (
-      <li
-        onCLick={() => {
-          markAsRead(id);
-        }}
-        data-notification-type={type}
-        dangerouslySetInnerHTML={html}
-        className={css(itemStyles.urgent)}
-      >
-        {value}
-      </li>
+      <>
+        {type && value ? (
+          <li className={type === "default" ? css(styles.default) : css(styles.urgent)} onClick={() => markAsRead(id)} data-notification-type={type}>
+            {value}
+          </li>
+        ) : null}
+        {html ? <li onClick={() => markAsRead(id)} data-urgent className={css(styles.urgent)} dangerouslySetInnerHTML={{ __html: html }}></li> : null}
+      </>
     );
   }
-  return (
-    <li
-      onCLick={() => {
-        markAsRead(id);
-      }}
-      data-notification-type={type}
-      dangerouslySetInnerHTML={html}
-      className={css(itemStyles.default)}
-    >
-      {value}
-    </li>
-  );
-};
+}
 
-const itemStyles = StyleSheet.create({
-  urgent: {
-    color: "red",
-  },
-
+const styles = StyleSheet.create({
   default: {
     color: "blue",
+  },
+  urgent: {
+    color: "red",
   },
 });
 
 NotificationItem.propTypes = {
-  type: propTypes.string,
-  value: propTypes.string,
-  html: propTypes.shape({
-    __html: propTypes.string,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  __html: PropTypes.shape({
+    html: PropTypes.string,
   }),
-  markAsRead: propTypes.func,
-  id: propTypes.number,
+  markAsRead: PropTypes.func,
+  id: PropTypes.number,
 };
 
 NotificationItem.defaultProps = {
   type: "default",
-  markAsRead: () => {},
+  markAsRead: () => {
+    console.log("empty func");
+  },
   id: 0,
 };
 
-export default memo(NotificationItem);
+export default NotificationItem;
