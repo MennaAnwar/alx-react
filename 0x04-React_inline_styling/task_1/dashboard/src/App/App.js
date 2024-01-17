@@ -83,17 +83,6 @@ const styles = StyleSheet.create({
     position: "relative",
     fontFamily: "Arial, Helvetica, sans-serif",
   },
-  "App-body": {
-    marginTop: "2rem",
-    height: "25rem",
-  },
-  "App-footer": {
-    borderTop: "4px solid red",
-    fontSize: "1.4rem",
-    padding: "0.5em",
-    textAlign: "center",
-    fontStyle: "italic",
-  },
 });
 
 App.defaultProps = {
