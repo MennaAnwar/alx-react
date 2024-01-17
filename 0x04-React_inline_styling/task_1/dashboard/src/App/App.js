@@ -63,8 +63,10 @@ class App extends React.Component {
           )}
           <BodySection title="News from the school">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis at tempora odio, necessitatibus repudiandae reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo ipsa
-              iste vero dolor voluptates.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perspiciatis at tempora odio, necessitatibus repudiandae
+              reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo
+              ipsa iste vero dolor voluptates.
             </p>
           </BodySection>
           <Footer />
@@ -80,6 +82,19 @@ const styles = StyleSheet.create({
     maxWidth: "100vw",
     position: "relative",
     fontFamily: "Arial, Helvetica, sans-serif",
+  },
+  "heading-section": {
+    borderBottom: "4px solid red",
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "row-reverse",
+  },
+  "App-footer": {
+    borderTop: "4px solid red",
+    fontSize: "1.4rem",
+    padding: "0.5em",
+    textAlign: "center",
+    fontStyle: "italic",
   },
 });
 
