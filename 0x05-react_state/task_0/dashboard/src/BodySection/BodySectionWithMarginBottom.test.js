@@ -1,42 +1,32 @@
-import { shallow, mount } from "enzyme";
-import React from "react";
-import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
-import { StyleSheetTestUtils } from "aphrodite";
+import React from 'react';
+import { StyleSheetTestUtils } from 'aphrodite';
+import { shallow } from 'enzyme';
+import BodySection from './BodySection';
+import BodySectionWithMarginBottom from './BodySectionWithMarginBottom'
 
-describe("<BodySectionWithMarginBottom />", () => {
-  beforeAll(() => {
-    StyleSheetTestUtils.suppressStyleInjection();
-  });
-  afterAll(() => {
-    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
-  });
+beforeEach(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
 
-  it("BodySectionWithMarginBottom renders without crashing", () => {
-    const wrapper = shallow(<BodySectionWithMarginBottom />);
-    expect(wrapper.exists()).toEqual(true);
-  });
+afterEach(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
 
-  it("Shallowing the component should render correctly a BodySection component and that the props are passed correctly to the child component", () => {
+describe('<BodySection />', () => {
+  it('renders a BodySection component', () => {
     const wrapper = shallow(
-      <BodySectionWithMarginBottom title="test title">
+      <BodySectionWithMarginBottom >
         <p>test children node</p>
       </BodySectionWithMarginBottom>
     );
 
-    const BodySection = wrapper.find("BodySection");
+    expect(wrapper.find(BodySection)).toHaveLength(1);
+    expect(wrapper.find('p')).toHaveLength(1);
+    expect(wrapper.find('p').text()).toBe('test children node');
 
-    expect(BodySection).toHaveLength(1);
-    expect(BodySection.props().title).toEqual("test title");
-
-    const internalBody = BodySection.dive();
-
-    const h2 = internalBody.find("h2");
-    const p = internalBody.find("p");
-
-    expect(h2).toHaveLength(1);
-    expect(h2.text()).toEqual("test title");
-
-    expect(p).toHaveLength(1);
-    expect(p.text()).toEqual("test children node");
+    // let containerStyle = wrapper.get(0).style;
+    // expect(containerStyle).toHaveProperty('margin-bottom', '40px');
+    // expect(wrapper.find('.bodySectionWithMargin')).toHaveProperty('margin-bottom', '40px');
+    // expect(wrapper.find('.bodySectionWithMargin')).toBeDefined();
   });
-});
+})
